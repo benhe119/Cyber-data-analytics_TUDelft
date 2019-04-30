@@ -7,10 +7,24 @@ Created on Tue Apr 30 09:23:31 2019
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+import zipfile
 
-DATA_PATH = r".\data_for_student_case.csv"
+DATA_PATH = r"../data/"
+DATA_FILE = "data_for_student_case.csv"
+DATA_ZIP = "data_for_student_case.csv.zip"
 
-data = pd.read_csv(DATA_PATH)
+exists = os.path.isfile(DATA_PATH + DATA_FILE)
+if not exists:  
+    print("Data file not existing, unzipping file...")
+    zip_ref = zipfile.ZipFile(DATA_PATH + DATA_ZIP, 'r')
+    zip_ref.extractall(DATA_PATH)
+    zip_ref.close()
+    print("Done.")
+else:
+    print("Data file found.")
+
+data = pd.read_csv(DATA_PATH + DATA_FILE)
 
 
 categories = data['txvariantcode'].unique()
@@ -40,5 +54,8 @@ plt.xticks(ind, tuple(categories), fontsize=5)
 plt.yscale('log')
 plt.xticks(rotation=30)
 plt.legend((p1[0], p2[0], p3[0]), ('Refused', 'Chargeback', 'Settled'))
-plt.savefig(r'./images/stacked_bar.pdf', format='pdf')
+
+target_img = r'../images/stacked_bar.pdf'
+plt.savefig(target_img, format='pdf')
 plt.show()
+print(f"Image saved in 'images' folder.")
