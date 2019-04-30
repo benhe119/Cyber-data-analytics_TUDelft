@@ -29,15 +29,16 @@ for category in categories:
 ind = np.arange(num_of_categories)    # the x locations for the groups
 width = 0.5      # the width of the bars: can also be len(x) sequence
 
-p1 = plt.bar(ind, refused, width)
-p2 = plt.bar(ind, fraud, width, bottom=np.array(refused))
-p3 = plt.bar(ind, no_fraud, width, bottom= np.array(fraud) + np.array(refused))
+p1 = plt.bar(ind, refused, width, color='lightgray')
+p2 = plt.bar(ind, fraud, width, bottom=np.array(refused), color='red')
+p3 = plt.bar(ind, no_fraud, width, bottom= np.array(fraud) + np.array(refused), color='lightgreen')
+
 
 plt.ylabel('Amount of transactions')
 plt.title('Transactions per card type')
-plt.xticks(ind, tuple(categories), fontsize=7)
+plt.xticks(ind, tuple(categories), fontsize=5)
 plt.yscale('log')
-plt.xticks(rotation=45)
+plt.xticks(rotation=30)
 plt.legend((p1[0], p2[0], p3[0]), ('Refused', 'Chargeback', 'Settled'))
-
+plt.savefig('stacked_bar.pdf', format='pdf')
 plt.show()
