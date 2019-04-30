@@ -48,4 +48,5 @@ ax.set(xlabel='Transaction amount')
 
 target_img = r"../images/density_estimation_amount.pdf"
 plt.savefig(target_img, format = 'pdf')
+plt.show()
 print(f"Image saved in 'images' folder.")
