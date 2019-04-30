@@ -11,7 +11,7 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("C:\\Users\\biby_\\Desktop\\TU Delft\\First year\\Period 4\\Cyber Data Analytics\\Assignment 1\\data_for_student_case.csv")
+df = pd.read_csv(r"./data_for_student_case.csv")
 
 data_fraud = df.loc[df['simple_journal'] == 'Chargeback']
 data_no_fraud = df.loc[df['simple_journal'] == 'Settled']
@@ -28,4 +28,4 @@ ax = sns.distplot(np.array(data_refused['amount']), hist = False, label = 'Refus
 
 ax.set(xlabel='Transaction amount')
 
-plt.savefig("density_estimation_amount.pdf", format = 'pdf')
+plt.savefig(r"./images/density_estimation_amount.pdf", format = 'pdf')
