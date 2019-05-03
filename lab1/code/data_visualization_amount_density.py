@@ -33,20 +33,14 @@ data_fraud = df.loc[df['simple_journal'] == 'Chargeback']
 data_no_fraud = df.loc[df['simple_journal'] == 'Settled']
 data_refused = df.loc[df['simple_journal'] == 'Refused']
 
-sns.set_style('whitegrid')
 ax = sns.distplot(np.array(data_fraud['amount']), hist = False, label = 'Chargeback', color = 'red')
-
-sns.set_style('whitegrid')
-ax = sns.distplot(np.array(data_refused['amount']), hist = False, label = 'Refused', color = 'blue')
-
-sns.set_style('whitegrid')
-ax = sns.distplot(np.array(data_no_fraud['amount']), hist = False, label = 'Settled', color = 'green')
-
+ax = sns.distplot(np.array(data_refused['amount']), hist = False, label = 'Refused', color = 'lightgray')
+ax = sns.distplot(np.array(data_no_fraud['amount']), hist = False, label = 'Settled', color = 'lightgreen')
 
 
 ax.set(xlabel='Transaction amount')
 
 target_img = r"../images/density_estimation_amount.pdf"
-plt.savefig(target_img, format = 'pdf')
+plt.savefig(target_img, format='pdf')
 plt.show()
 print(f"Image saved in 'images' folder.")
