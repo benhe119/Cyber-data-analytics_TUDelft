@@ -29,6 +29,21 @@ else:
 
 df = pd.read_csv(DATA_PATH + DATA_FILE)
 
+#convert amount in euros
+aud = 0.626093;
+nzd = 0.591501;
+sek = 0.0935468;
+gbp = 1.16536;
+mxn = 0.0467946;
+conversion_rate = {"AUD": 0.626093,
+                    "NZD": 0.591501,
+                    "SEK": 0.0935468,
+                    "GBP": 1.16536,
+                    "MXN": 0.0467946}
+
+df['amount'] = df[['amount', 'currencycode']].apply(lambda row: row['amount']*conversion_rate[row['currencycode']], axis=1)
+
+
 data_fraud = df.loc[df['simple_journal'] == 'Chargeback']
 data_no_fraud = df.loc[df['simple_journal'] == 'Settled']
 data_refused = df.loc[df['simple_journal'] == 'Refused']
