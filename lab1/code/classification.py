@@ -29,7 +29,7 @@ print(f"Before SMOTE: Fraud cases test: {len(y_test[y_test==1])} and non-fraud c
 
 brd_smote = BorderlineSMOTE()
 smt = SMOTE()
-X_smote, y_smote = smt.fit_sample(X_train, y_train)
+X_smote, y_smote = smt.fit_resample(X_train, y_train)
 
 print(f"After SMOTE: Fraud cases train: {len(y_smote[y_smote == 1])} and non-fraud cases: {len(y_smote[y_smote ==0 ])}")
 print(f"After SMOTE: Fraud cases test: {len(y_test[y_test==1])} and non-fraud cases train: {len(y_test[y_test==0])}")
