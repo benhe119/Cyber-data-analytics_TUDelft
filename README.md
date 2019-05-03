@@ -1,5 +1,11 @@
 # Cyber-data-analytics_TUDelft
 
+Python version: 3.6.7   
+OS: Ubuntu 18.04.2 LTS   
+Requirements can be found at "./lab<lab-number>/code/requirements.txt"    
+     
+---------------------------------------------------------------------     
+
 DATA DESCRIPTION:
 
 - issuercountrycode:  
