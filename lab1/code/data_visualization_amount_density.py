@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Feb 26 09:51:53 2019
-
-@author: Bianca Iancu
-"""
-
-
 import pandas as pd
 import seaborn as sns
 import numpy as np
@@ -30,11 +22,11 @@ else:
 df = pd.read_csv(DATA_PATH + DATA_FILE)
 
 #convert amount in euros
-aud = 0.626093;
-nzd = 0.591501;
-sek = 0.0935468;
-gbp = 1.16536;
-mxn = 0.0467946;
+aud = 0.626093
+nzd = 0.591501
+sek = 0.0935468
+gbp = 1.16536
+mxn = 0.0467946
 conversion_rate = {"AUD": 0.626093,
                     "NZD": 0.591501,
                     "SEK": 0.0935468,
