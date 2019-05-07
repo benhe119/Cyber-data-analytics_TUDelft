@@ -18,8 +18,8 @@ y = df['label']
 X = df.drop(columns=['label'])
 
 # just one split
-lr = LogisticRegression(solver='lbfgs', random_state=1242351)
-rf = RandomForestClassifier(n_estimators=100, random_state=31231)
+lr = LogisticRegression(solver='lbfgs')
+rf = RandomForestClassifier(n_estimators=100,)
 ada = AdaBoostClassifier(DecisionTreeClassifier(max_depth=1),
                          algorithm="SAMME",
                          n_estimators=200)
