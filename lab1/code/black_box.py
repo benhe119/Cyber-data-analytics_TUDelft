@@ -1,4 +1,3 @@
-# from collections import Counter
 import numpy as np
 import pandas as pd
 from imblearn.over_sampling import SMOTE
@@ -13,7 +12,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 import math
 DATA_PATH = r"../data/"
-DATA_FILE = "data_processed.csv"
+DATA_FILE = "data_processed_new.csv"
 
 df = pd.read_csv(DATA_PATH + DATA_FILE)
 
@@ -25,8 +24,8 @@ k_nn = 5
 models = [
     ("Ada", AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), algorithm="SAMME", n_estimators=200), 0.025, 1),
     ("rf", RandomForestClassifier(n_estimators=200, n_jobs=-1), 0.015, 1),
-    ("lr", LogisticRegression(solver='liblinear'), 0.5, 1),
-    (f"kNN_{k_nn}", KNeighborsClassifier(n_neighbors=k_nn, n_jobs=-1), 0.015, 3),
+    ("lr", LogisticRegression(solver='liblinear'), 0.15, 1),
+    (f"kNN_{k_nn}", KNeighborsClassifier(n_neighbors=k_nn, n_jobs=-1), 0.025, 1),
     ("NB", GaussianNB(), 0.015, 1),
 ]
 
