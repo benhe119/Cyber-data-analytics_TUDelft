@@ -1,5 +1,4 @@
-from collections import Counter
-
+# from collections import Counter
 import numpy as np
 import pandas as pd
 from imblearn.over_sampling import SMOTE
@@ -14,7 +13,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 import math
 DATA_PATH = r"../data/"
-DATA_FILE = "data_processed_new.csv"
+DATA_FILE = "data_processed.csv"
 
 df = pd.read_csv(DATA_PATH + DATA_FILE)
 
@@ -22,16 +21,16 @@ y = df['label']
 X = df.drop(columns=['label'])
 
 # name, classifier, best_smote, weight (for ensembling)
-k_nn = 3
+k_nn = 5
 models = [
-    #("Ada", AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), algorithm="SAMME", n_estimators=200), 0.025, 1),
-    #("rf", RandomForestClassifier(n_estimators=200, n_jobs=-1), 0.015, 1),
-    #("lr", LogisticRegression(solver='lbfgs', n_jobs=-1), 0.5, 1),
-    (f"kNN_{k_nn}", KNeighborsClassifier(n_neighbors=k_nn, n_jobs=-1), 0.015, 1),
-    #("NB", GaussianNB(), 0.015, 1),
+    ("Ada", AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), algorithm="SAMME", n_estimators=200), 0.025, 1),
+    ("rf", RandomForestClassifier(n_estimators=200, n_jobs=-1), 0.015, 1),
+    ("lr", LogisticRegression(solver='liblinear'), 0.5, 1),
+    (f"kNN_{k_nn}", KNeighborsClassifier(n_neighbors=k_nn, n_jobs=-1), 0.015, 3),
+    ("NB", GaussianNB(), 0.015, 1),
 ]
 
-TEST_ENSEMBLE = False
+TEST_ENSEMBLE = True
 if TEST_ENSEMBLE:
     # With crossval
     skf = StratifiedKFold(n_splits=10, shuffle=True)
@@ -67,9 +66,14 @@ if TEST_ENSEMBLE:
 
     for name in conf_matrices.keys():
         print(name)
-        tn, fp, fn, tp = conf_matrices[name].ravel()
-        print(f"Precision: {tp/(tp+fp)}")
-        print(f"Recall: {tp/(tp+fn)}")
+        conf_mat = conf_matrices[name]
+        tn, fp, fn, tp = conf_mat.ravel()
+        print(conf_mat)
+        precision = tp / (tp + fp)
+        recall = tp / (tp + fn)
+        print(f"Precision: {precision}")
+        print(f"Recall: {recall}")
+        print(f"F0.5: {( (1+math.pow(0.5,2))*precision*recall )/( math.pow(0.5,2) * precision + recall )}")
 
 else:
     print("Testing individual baselines")

@@ -29,9 +29,9 @@ X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test
 
 classifiers = [
     ("Ada", AdaBoostClassifier(n_estimators=50)),
-    ("rf", RandomForestClassifier(n_estimators=50)),
-    ("lr", LogisticRegression()),
-    ("kNN", KNeighborsClassifier()),
+    ("rf", RandomForestClassifier(n_estimators=50, n_jobs=-1)),
+    ("lr", LogisticRegression(n_jobs=-1)),
+    ("kNN", KNeighborsClassifier(n_neighbors=5, n_jobs=-1)),
     ("NB", GaussianNB()),
 
 ]
@@ -107,6 +107,8 @@ for clsf_name, clsf in classifiers:
 
 
 print(best_smotes)
+
+
 for (clsf_name, clsf), best_smote in zip(classifiers, best_smotes):
     print(f"{clsf_name} --> {best_smote}")
 
