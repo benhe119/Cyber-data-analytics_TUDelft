@@ -22,14 +22,14 @@ X = df.drop(columns=['label'])
 # name, classifier, best_smote, weight (for ensembling)
 k_nn = 5
 models = [
-    ("Ada", AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), algorithm="SAMME", n_estimators=200), 0.025, 1),
-    ("rf", RandomForestClassifier(n_estimators=200, n_jobs=-1), 0.015, 1),
-    ("lr", LogisticRegression(solver='liblinear'), 0.15, 1),
+    #("Ada", AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), algorithm="SAMME", n_estimators=200), 0.025, 1),
+    #("rf", RandomForestClassifier(n_estimators=200, n_jobs=-1), 0.015, 1),
+    #("lr", LogisticRegression(solver='liblinear'), 0.15, 1),
     (f"kNN_{k_nn}", KNeighborsClassifier(n_neighbors=k_nn, n_jobs=-1), 0.025, 1),
-    ("NB", GaussianNB(), 0.015, 1),
+    #("NB", GaussianNB(), 0.015, 1),
 ]
 
-TEST_ENSEMBLE = True
+TEST_ENSEMBLE = False
 if TEST_ENSEMBLE:
     # With crossval
     skf = StratifiedKFold(n_splits=10, shuffle=True)
