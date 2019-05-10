@@ -14519,7 +14519,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -14527,36 +14527,6 @@ div#notebook {
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Looking in indexes: https://pypi.python.org/simple/
-Requirement already satisfied: imblearn in c:\users\gabri\anaconda3\lib\site-packages (0.0)
-Requirement already satisfied: matplotlib in c:\users\gabri\anaconda3\lib\site-packages (3.0.3)
-Requirement already satisfied: imbalanced-learn in c:\users\gabri\anaconda3\lib\site-packages (from imblearn) (0.4.3)
-Requirement already satisfied: numpy&gt;=1.10.0 in c:\users\gabri\anaconda3\lib\site-packages (from matplotlib) (1.16.2)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\gabri\anaconda3\lib\site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\gabri\anaconda3\lib\site-packages (from matplotlib) (1.0.1)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in c:\users\gabri\anaconda3\lib\site-packages (from matplotlib) (2.2.0)
-Requirement already satisfied: python-dateutil&gt;=2.1 in c:\users\gabri\anaconda3\lib\site-packages (from matplotlib) (2.7.3)
-Requirement already satisfied: scipy&gt;=0.13.3 in c:\users\gabri\anaconda3\lib\site-packages (from imbalanced-learn-&gt;imblearn) (1.2.1)
-Requirement already satisfied: scikit-learn&gt;=0.20 in c:\users\gabri\anaconda3\lib\site-packages (from imbalanced-learn-&gt;imblearn) (0.20.3)
-Requirement already satisfied: six in c:\users\gabri\anaconda3\lib\site-packages (from cycler&gt;=0.10-&gt;matplotlib) (1.12.0)
-Requirement already satisfied: setuptools in c:\users\gabri\anaconda3\lib\site-packages (from kiwisolver&gt;=1.0.1-&gt;matplotlib) (40.2.0)
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -15308,7 +15278,7 @@ Max &#39;F0.5&#39; --&gt; 0.01517315244555516 (SMOTE perc: 0.025)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -15378,7 +15348,7 @@ Max &#39;F0.5&#39; --&gt; 0.01517315244555516 (SMOTE perc: 0.025)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">warn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -15469,6 +15439,9 @@ Smote 0.05, Criterion gini, maximum depth 5, minimum splits 0.1 f-score 0.055733
 --- SMOTE PERCENTAGE: 0.3 ---
 --- SMOTE PERCENTAGE: 0.7 ---
 --- SMOTE PERCENTAGE: 1 ---
+Best result for smote 0.05, with  f score 0.05573375207001217, min split 0.1, max depth 5 and criterion gini 
+[[222353   1144]
+ [   283     62]]
 </pre>
 </div>
 </div>
@@ -15480,7 +15453,7 @@ Smote 0.05, Criterion gini, maximum depth 5, minimum splits 0.1 f-score 0.055733
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Based on the above experiments, we conclude that the best configuration for the decision tree classifier is the following: SMOTE of 0.05, criterion "gini",  min_samples_split = 0.1, max_depth = 13. This achieves the best F0.5 score.</p>
+<p>Based on the above experiments, we conclude that the best configuration for the decision tree classifier is the following: SMOTE of 0.05, criterion "gini",  min_samples_split = 0.1, max_depth = 5. This achieves the best F0.5 score.</p>
 
 </div>
 </div>
@@ -15495,7 +15468,7 @@ Smote 0.05, Criterion gini, maximum depth 5, minimum splits 0.1 f-score 0.055733
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#We first split in train and test set</span>
@@ -15541,7 +15514,7 @@ Smote 0.05, Criterion gini, maximum depth 5, minimum splits 0.1 f-score 0.055733
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -15557,7 +15530,7 @@ Smote 0.05, Criterion gini, maximum depth 5, minimum splits 0.1 f-score 0.055733
 <span class="n">penalty_best</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
 <span class="n">C_best</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">for</span> <span class="n">smote_perc</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+<span class="k">for</span> <span class="n">smote_perc</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;--- SMOTE PERCENTAGE: </span><span class="si">{smote_perc}</span><span class="s1"> ---&#39;</span><span class="p">)</span>
 
     <span class="n">smt</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">sampling_strategy</span><span class="o">=</span><span class="n">smote_perc</span><span class="p">)</span> <span class="k">if</span> <span class="n">smote_perc</span> <span class="k">else</span> <span class="kc">None</span>
@@ -15600,11 +15573,56 @@ Smote 0.05, Criterion gini, maximum depth 5, minimum splits 0.1 f-score 0.055733
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>--- SMOTE PERCENTAGE: 0.05 ---
+---UPDATED BEST---
+Smote 0.05, Penalty l1, C 0.001,  f-score 0.026963822046931617
+
+
+---UPDATED BEST---
+Smote 0.05, Penalty l1, C 0.03162277660168379,  f-score 0.034969117304085695
+
+
+---UPDATED BEST---
+Smote 0.05, Penalty l1, C 1.0,  f-score 0.037317063739755615
+
+
+---UPDATED BEST---
+Smote 0.05, Penalty l1, C 31.622776601683793,  f-score 0.039739507377406
+
+
+---UPDATED BEST---
+Smote 0.05, Penalty l2, C 31.622776601683793,  f-score 0.04292862122650789
+
+
+--- SMOTE PERCENTAGE: 0.1 ---
+--- SMOTE PERCENTAGE: 0.3 ---
+--- SMOTE PERCENTAGE: 0.7 ---
+--- SMOTE PERCENTAGE: 1 ---
+Best result for smote 0.05, with  f score 0.04292862122650789, penalty l2, C 31.622776601683793
+[[222563    934]
+ [   310     35]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The best configuration found for the logistic regression classifier was the following: SMOTE percentage of 0.05, penalty = 'l2' and C = 1.0.
+<p>The best configuration found for the logistic regression classifier was the following: SMOTE percentage of 0.05, penalty = 'l2' and C = 31.
 This configuration achieved the best F0.5 score.</p>
 
 </div>
