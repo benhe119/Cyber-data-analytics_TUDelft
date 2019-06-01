@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13116,17 +13116,20 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Autoencoders-for-Anomaly-Detection">Autoencoders for Anomaly Detection<a class="anchor-link" href="#Autoencoders-for-Anomaly-Detection">&#182;</a></h1><p>Based on the article at <a href="https://bit.ly/2VgNyl7">https://bit.ly/2VgNyl7</a>, made for the bonus task of the cyber data analytics class. Download the data and adjust the paths in the next cells.</p>
-<p>Requires</p>
+<h1 id="Read-before-doing-anything">Read before doing anything<a class="anchor-link" href="#Read-before-doing-anything">&#182;</a></h1><p>We found an error in the training dataset 2 (there was a whitespace in front of each feature name). Therefore we preprocessed and fixed it. Our files have been renamed and they are as follows:</p>
 <ul>
-<li>seaborn</li>
-<li>tensorflow</li>
-<li>keras</li>
-<li>sklearn</li>
-<li>pyplot, pylab</li>
+<li>./data/trn_set_1.csv --&gt; BATADAL_dataset03.csv</li>
+<li>./data/trn_set_2.csv --&gt; BATADAL_dataset04.csv</li>
+<li>./data/test_set.csv --&gt; BATADAL_test_dataset.csv</li>
 </ul>
-<p>and for visualizing the network also the graphviz package. Install directly from the notebook with <strong>!pip install package</strong></p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Bonus-point">Bonus point<a class="anchor-link" href="#Bonus-point">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -13154,17 +13157,6 @@ div#notebook {
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">roc_curve</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">precision_recall_fscore_support</span><span class="p">,</span> <span class="n">f1_score</span>
 
-<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="k">import</span> <span class="n">seed</span>
-<span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="k">import</span> <span class="n">set_random_seed</span>
-<span class="n">set_random_seed</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">SEED</span> <span class="o">=</span> <span class="mi">123</span> 
-<span class="n">DATA_SPLIT_PCT</span> <span class="o">=</span> <span class="mf">0.2</span>
-
-<span class="n">LABELS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Normal&quot;</span><span class="p">,</span><span class="s2">&quot;Attack&quot;</span><span class="p">]</span>
-
-<span class="c1"># please adjust the dataset paths</span>
 <span class="n">NORMAL</span> <span class="o">=</span> <span class="s2">&quot;../data/trn_set_1.csv&quot;</span>
 <span class="n">MIXED</span> <span class="o">=</span> <span class="s2">&quot;../data/trn_set_2.csv&quot;</span>
 <span class="n">TEST</span> <span class="o">=</span> <span class="s2">&quot;../data/test_set.csv&quot;</span>
@@ -13229,8 +13221,6 @@ We train the autoencoder on the normal data from BATADAL_dataset03 and test on B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_normal</span> <span class="o">=</span> <span class="n">df_normal</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;DATETIME&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df_mixed</span> <span class="o">=</span> <span class="n">df_mixed</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;DATETIME&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;DATETIME&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1">#df = pd.concat([df_normal, df_mixed], ignore_index=True)</span>
 </pre></div>
 
     </div>
@@ -13241,7 +13231,7 @@ We train the autoencoder on the normal data from BATADAL_dataset03 and test on B
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Splitting into training, validation, testing, group into classes</p>
+<p>Splitting into training(dataset 1) and validation(dataset 2)</p>
 
 </div>
 </div>
@@ -13251,11 +13241,7 @@ We train the autoencoder on the normal data from BATADAL_dataset03 and test on B
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#df_train, df_test = train_test_split(df, test_size=DATA_SPLIT_PCT, random_state=SEED)</span>
-<span class="c1">#df_train, df_valid = train_test_split(df_train, test_size=DATA_SPLIT_PCT, random_state=SEED)</span>
-
-
-<span class="n">df_train</span> <span class="o">=</span> <span class="n">df_normal</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train</span> <span class="o">=</span> <span class="n">df_normal</span>
 <span class="n">df_valid</span> <span class="o">=</span> <span class="n">df_mixed</span>
 </pre></div>
 
@@ -13281,13 +13267,6 @@ We train the autoencoder on the normal data from BATADAL_dataset03 and test on B
 
 <span class="n">df_valid_0_x</span> <span class="o">=</span> <span class="n">df_valid_0</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ATT_FLAG&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df_valid_1_x</span> <span class="o">=</span> <span class="n">df_valid_1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ATT_FLAG&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-
-<span class="c1">#df_test_0 = df_test.loc[df[&#39;ATT_FLAG&#39;] == 0]</span>
-<span class="c1">#df_test_1 = df_test.loc[df[&#39;ATT_FLAG&#39;] == 1]</span>
-
-<span class="c1">#df_test_0_x = df_test_0.drop([&#39;ATT_FLAG&#39;], axis=1)</span>
-<span class="c1">#df_test_1_x = df_test_1.drop([&#39;ATT_FLAG&#39;], axis=1)</span>
 </pre></div>
 
     </div>
@@ -13314,7 +13293,6 @@ We train the autoencoder on the normal data from BATADAL_dataset03 and test on B
 <span class="n">df_valid_x_rescaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_valid</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ATT_FLAG&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
 
 <span class="n">df_test_0_x_rescaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span>
-<span class="c1">#df_test_x_rescaled = scaler.transform(df_test.drop([&#39;ATT_FLAG&#39;], axis = 1))</span>
 </pre></div>
 
     </div>
@@ -13469,7 +13447,7 @@ C:\Users\biby_\Anaconda3\lib\site-packages\ipykernel_launcher.py:6: DataConversi
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Set-up-a-neural-network-with-relu-encoder">Set up a neural network with relu-encoder<a class="anchor-link" href="#Set-up-a-neural-network-with-relu-encoder">&#182;</a></h2>
+<h2 id="Grid-search-for-hyperparameters-tuning">Grid search for hyperparameters tuning<a class="anchor-link" href="#Grid-search-for-hyperparameters-tuning">&#182;</a></h2>
 </div>
 </div>
 </div>
